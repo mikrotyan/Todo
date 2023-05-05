@@ -13,54 +13,62 @@ import com.example.todolist.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SignInFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SignUpFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var navController: NavController
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var binding: FragmentSignUpBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false)
+        binding = FragmentSignUpBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignInFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SignInFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        init(view)
+
+        binding.textViewSignIn.setOnClickListener {
+            navController.navigate(R.id.action_signUpFragment_to_signInFragment)
+        }
+
+        binding.nextBtn.setOnClickListener {
+            val email = binding.emailEt.text.toString()
+            val pass = binding.passEt.text.toString()
+            val verifyPass = binding.verifyPassEt.text.toString()
+
+            if (email.isNotEmpty() && pass.isNotEmpty() && verifyPass.isNotEmpty()) {
+                if (pass == verifyPass) {
+
+                    registerUser(email, pass)
+
+                } else {
+                    Toast.makeText(context, "Password is not same", Toast.LENGTH_SHORT).show()
                 }
-            }
+            } else
+                Toast.makeText(context, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    private fun registerUser(email: String, pass: String) {
+        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+            if (it.isSuccessful)
+                navController.navigate(R.id.action_signUpFragment_to_homeFragment)
+            else
+                Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
+
+        }
+    }
+
+    private fun init(view: View) {
+        navController = Navigation.findNavController(view)
+        mAuth = FirebaseAuth.getInstance()
     }
 }
