@@ -8,12 +8,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="187dp"
+        android:layout_width="413dp"
+        android:layout_height="189dp"
         android:scaleType="fitXY"
         android:src="@drawable/design1"
-        app:layout_constraintStart_toStartOf="match_parent"
-        app:layout_constraintTop_toTopOf="match_parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -56,6 +56,16 @@
                 android:layout_toLeftOf="@+id/img_check"
                 android:padding="8dp"
                 app:srcCompat="@drawable/delete" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/design2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="0dp" />
 
         </RelativeLayout>
 
@@ -76,8 +86,9 @@
     <EditText
         android:id="@+id/et_note"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginTop="26dp"
+        android:layout_marginBottom="26dp"
         android:background="@null"
         android:ems="10"
         android:gravity="top"
@@ -86,16 +97,8 @@
         android:lineSpacingMultiplier="1.8"
         app:layout_constraintEnd_toEndOf="@+id/et_title"
         app:layout_constraintStart_toStartOf="@+id/et_title"
-        app:layout_constraintTop_toBottomOf="@+id/et_title" />
+        app:layout_constraintTop_toBottomOf="@+id/et_title"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/design2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="0dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
