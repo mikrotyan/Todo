@@ -1,5 +1,6 @@
 package com.example.todolist.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.todolist.MainActivity
 import com.example.todolist.R
 import com.google.firebase.auth.FirebaseAuth
 
@@ -37,8 +39,9 @@ class SplashFragment : Fragment() {
         val handler = Handler(Looper.myLooper()!!)
         handler.postDelayed({
 
-            if (isLogin)
-                navController.navigate(R.id.action_splashFragment_to_homeFragment)
+            if (isLogin){
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)}
             else
                 navController.navigate(R.id.action_splashFragment_to_signInFragment)
 
