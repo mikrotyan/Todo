@@ -15,7 +15,12 @@
         <entry key="..\:/Programs/TodoList/app/src/main/res/drawable/design1.xml" value="0.1205" />
         <entry key="..\:/Programs/TodoList/app/src/main/res/drawable/ic_launcher_background.xml" value="0.125" />
         <entry key="..\:/Programs/TodoList/app/src/main/res/drawable/money1_background.xml" value="0.1385" />
+        <entry key="..\:/Programs/TodoList/app/src/main/res/layout-land/activity_add_todo.xml" value="0.2" />
+        <entry key="..\:/Programs/TodoList/app/src/main/res/layout-land/activity_first.xml" value="0.176" />
         <entry key="..\:/Programs/TodoList/app/src/main/res/layout-land/activity_main.xml" value="0.176" />
+        <entry key="..\:/Programs/TodoList/app/src/main/res/layout-land/fragment_sign_in.xml" value="0.176" />
+        <entry key="..\:/Programs/TodoList/app/src/main/res/layout-land/fragment_sign_up.xml" value="0.176" />
+        <entry key="..\:/Programs/TodoList/app/src/main/res/layout-land/fragment_splash.xml" value="0.2" />
         <entry key="..\:/Programs/TodoList/app/src/main/res/layout-land/list_item.xml" value="0.2" />
         <entry key="..\:/Programs/TodoList/app/src/main/res/layout/activity_add_todo.xml" value="0.2" />
         <entry key="..\:/Programs/TodoList/app/src/main/res/layout/activity_first.xml" value="0.14270833333333333" />
