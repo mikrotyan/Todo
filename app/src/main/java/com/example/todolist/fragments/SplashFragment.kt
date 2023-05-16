@@ -39,9 +39,8 @@ class SplashFragment : Fragment() {
         val handler = Handler(Looper.myLooper()!!)
         handler.postDelayed({
 
-            if (isLogin){
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)}
+            if (isLogin)
+                navController.navigate(R.id.action_splashFragment_to_firstActivity)
             else
                 navController.navigate(R.id.action_splashFragment_to_signInFragment)
 
