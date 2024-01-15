@@ -1,4 +1,4 @@
-package com.example.todolist
+package com.example.todolist.presentation
 
 import android.app.Activity
 import android.content.Intent
@@ -7,12 +7,11 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.todolist.adaptors.TodoAdapter
-import com.example.todolist.database.TodoDatabase
+import com.example.todolist.presentation.adapters.TodoAdapter
+import com.example.todolist.data.database.TodoDatabase
 import com.example.todolist.databinding.ActivityFirstBinding
-import com.example.todolist.databinding.ActivityMainBinding
-import com.example.todolist.models.Todo
-import com.example.todolist.models.TodoViewModel
+import com.example.todolist.data.database.Todo
+import com.example.todolist.domain.models.TodoDomain
 
 class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
 
@@ -52,7 +51,7 @@ class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
         val getContent =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
-                    val todo = result.data?.getSerializableExtra("todo") as? Todo
+                    val todo = result.data?.getSerializableExtra("todo") as? TodoDomain
                     if (todo != null) {
                         viewModel.insertTodo(todo)
                     }
@@ -69,7 +68,7 @@ class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
     private val updateOrDeleteTodo =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val todo = result.data?.getSerializableExtra("todo") as Todo
+                val todo = result.data?.getSerializableExtra("todo") as TodoDomain
                 val isDelete = result.data?.getBooleanExtra("delete_todo", false) as Boolean
                 if (todo != null && !isDelete) {
                     viewModel.updateTodo(todo)
@@ -81,7 +80,7 @@ class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
 
 
 
-    override fun onItemClicked(todo: Todo) {
+    override fun onItemClicked(todo: TodoDomain) {
         val intent = Intent(this@FirstActivity, AddTodoActivity::class.java)
         intent.putExtra("current_todo", todo)
         updateOrDeleteTodo.launch(intent)

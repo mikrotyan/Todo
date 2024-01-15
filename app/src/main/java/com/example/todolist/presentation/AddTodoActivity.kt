@@ -1,4 +1,4 @@
-package com.example.todolist
+package com.example.todolist.presentation
 
 import android.app.Activity
 import android.content.Intent
@@ -7,15 +7,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.todolist.databinding.ActivityAddTodoBinding
-import com.example.todolist.models.Todo
+import com.example.todolist.data.database.Todo
+import com.example.todolist.domain.models.TodoDomain
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddTodoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddTodoBinding
-    private lateinit var todo: Todo
-    private lateinit var oldTodo: Todo
+    private lateinit var todo: TodoDomain
+    private lateinit var oldTodo: TodoDomain
     var isUpdate = false
 
 
@@ -25,7 +26,7 @@ class AddTodoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         try {
-            oldTodo = intent.getSerializableExtra("current_todo") as Todo
+            oldTodo = intent.getSerializableExtra("current_todo") as TodoDomain
             binding.etTitle.setText(oldTodo.title)
             binding.etNote.setText(oldTodo.note)
             isUpdate = true
@@ -46,9 +47,9 @@ class AddTodoActivity : AppCompatActivity() {
                 val formatter = SimpleDateFormat("EEE, d MMM yyyy HH:mm a")
 
                 if(isUpdate){
-                    todo = Todo(oldTodo.id, title, todoDescription, formatter.format(Date()))
+                    todo = TodoDomain(oldTodo.id, title, todoDescription, formatter.format(Date()))
                 }else{
-                    todo = Todo(null, title, todoDescription, formatter.format(Date()))
+                    todo = TodoDomain(null, title, todoDescription, formatter.format(Date()))
                 }
                 var intent = Intent()
                 intent.putExtra("todo", todo)

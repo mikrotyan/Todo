@@ -1,8 +1,8 @@
-package com.example.todolist.models
+package com.example.todolist.domain.models
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.todolist.models.Todo
+import com.example.todolist.data.database.Todo
 
 @Dao
 interface TodoDao {

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.todolist.fragments.SplashFragment"
+        android:name="com.example.todolist.presentation.fragments.SplashFragment"
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_signInFragment"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.todolist.fragments.SignInFragment"
+        android:name="com.example.todolist.presentation.fragments.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.todolist.fragments.SignUpFragment"
+        android:name="com.example.todolist.presentation.fragments.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <activity
         android:id="@+id/firstActivity"
-        android:name="com.example.todolist.FirstActivity"
+        android:name="com.example.todolist.presentation.FirstActivity"
         android:label="activity_first"
         tools:layout="@layout/activity_first" />
 </navigation>

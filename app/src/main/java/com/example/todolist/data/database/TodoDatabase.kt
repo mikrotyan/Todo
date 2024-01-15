@@ -1,11 +1,10 @@
-package com.example.todolist.database
+package com.example.todolist.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.todolist.models.Todo
-import com.example.todolist.models.TodoDao
+import com.example.todolist.domain.models.TodoDao
 
 
 @Database(entities = arrayOf(Todo::class), version = 1)
