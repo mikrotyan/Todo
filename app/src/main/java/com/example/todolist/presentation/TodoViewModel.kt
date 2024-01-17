@@ -30,6 +30,7 @@ class TodoViewModel(application: Application): AndroidViewModel(application) {
         insertToDBUseCase = InsertToDBUseCase(repository)
         updateDBUseCase = UpdateDBUseCase(repository)
         allTodo = getAllTodosUseCase.execute()
+
     }
 
     fun insertTodo(todo: TodoDomain) = viewModelScope.launch(Dispatchers.IO){

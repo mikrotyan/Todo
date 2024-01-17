@@ -17,8 +17,8 @@ class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
 
     private lateinit var binding: ActivityFirstBinding
     private lateinit var database: TodoDatabase
-    lateinit var viewModel: TodoViewModel
-    lateinit var adapter: TodoAdapter
+    private lateinit var viewModel: TodoViewModel
+    private lateinit var adapter: TodoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(TodoViewModel::class.java)
+        )[TodoViewModel::class.java]
 
         viewModel.allTodo.observe(this) { list ->
             list?.let {
