@@ -14,10 +14,10 @@
         android:theme="@style/Theme.TodoList"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.FirstActivity"
+            android:name=".presentation.first_activity.FirstActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.AddTodoActivity"
+            android:name=".presentation.add_todo_activity.AddTodoActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.MainActivity"

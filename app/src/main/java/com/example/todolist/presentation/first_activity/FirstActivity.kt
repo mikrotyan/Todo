@@ -1,5 +1,6 @@
-package com.example.todolist.presentation
+package com.example.todolist.presentation.first_activity
 
+import com.example.todolist.presentation.add_todo_activity.AddTodoActivity
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.presentation.adapters.TodoAdapter
 import com.example.todolist.data.database.TodoDatabase
 import com.example.todolist.databinding.ActivityFirstBinding
-import com.example.todolist.data.database.Todo
 import com.example.todolist.domain.models.TodoDomain
 
 class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
