@@ -11,12 +11,14 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.todolist.R
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
 
-
-    private lateinit var mAuth: FirebaseAuth
+    @Inject
+    lateinit var mAuth: FirebaseAuth
     private lateinit var navController: NavController
 
     override fun onCreateView(
@@ -46,7 +48,6 @@ class SplashFragment : Fragment() {
     }
 
     private fun init(view: View) {
-        mAuth = FirebaseAuth.getInstance()
         navController = Navigation.findNavController(view)
     }
 }

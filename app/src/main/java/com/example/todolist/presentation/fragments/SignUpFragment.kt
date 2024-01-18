@@ -11,12 +11,15 @@ import androidx.navigation.Navigation
 import com.example.todolist.R
 import com.example.todolist.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
 
     private lateinit var navController: NavController
-    private lateinit var mAuth: FirebaseAuth
+    @Inject
+    lateinit var mAuth: FirebaseAuth
     private lateinit var binding: FragmentSignUpBinding
 
     override fun onCreateView(
@@ -72,6 +75,5 @@ class SignUpFragment : Fragment() {
 
     private fun init(view: View) {
         navController = Navigation.findNavController(view)
-        mAuth = FirebaseAuth.getInstance()
     }
 }

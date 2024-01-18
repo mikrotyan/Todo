@@ -5,6 +5,7 @@ import com.example.todolist.data.TodoRepositoryImpl
 import com.example.todolist.data.database.TodoDao
 import com.example.todolist.data.database.TodoDatabase
 import com.example.todolist.domain.TodoRepository
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,5 +33,11 @@ class DataModule {
     @Provides
     fun provideDatabase(@ApplicationContext context: Context): TodoDatabase {
         return TodoDatabase.getDatabase(context)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFirebase(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
     }
 }

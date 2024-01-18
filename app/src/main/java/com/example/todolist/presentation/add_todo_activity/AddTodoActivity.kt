@@ -1,22 +1,23 @@
 package com.example.todolist.presentation.add_todo_activity
 
-import AddTodoViewModel
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.example.todolist.databinding.ActivityAddTodoBinding
 import com.example.todolist.domain.models.TodoDomain
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class AddTodoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddTodoBinding
-    private lateinit var viewModel: AddTodoViewModel
+    private val viewModel: AddTodoViewModel by viewModels()
     private var isUpdate = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class AddTodoActivity : AppCompatActivity() {
         binding = ActivityAddTodoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this).get(AddTodoViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(com.example.todolist.presentation.add_todo_activity.AddTodoViewModel::class.java)
 
         try {
             val oldTodo = intent.getSerializableExtra("current_todo") as TodoDomain

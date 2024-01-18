@@ -19,7 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
 
     private lateinit var binding: ActivityFirstBinding
-    private lateinit var database: TodoDatabase
     private val viewModel: TodoViewModel by viewModels()
     private lateinit var adapter: TodoAdapter
 
@@ -30,18 +29,11 @@ class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
 
         initUI()
 
-//        viewModel = ViewModelProvider(
-//            this,
-//            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-//        )[TodoViewModel::class.java]
-
         viewModel.allTodo.observe(this) { list ->
             list?.let {
                 adapter.updateList(list)
             }
         }
-
-        database = TodoDatabase.getDatabase(this)
     }
 
     private fun initUI() {
