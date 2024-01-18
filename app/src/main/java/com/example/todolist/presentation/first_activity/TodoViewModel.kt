@@ -11,25 +11,32 @@ import com.example.todolist.domain.useCases.DeleteFromDBUseCase
 import com.example.todolist.domain.useCases.GetAllTodosUseCase
 import com.example.todolist.domain.useCases.InsertToDBUseCase
 import com.example.todolist.domain.useCases.UpdateDBUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TodoViewModel(application: Application): AndroidViewModel(application) {
-    private val repository: TodoRepositoryImpl
-    val allTodo : LiveData<List<TodoDomain>>
-    private val deleteFromDBUseCase: DeleteFromDBUseCase
-    private val getAllTodosUseCase: GetAllTodosUseCase
-    private val insertToDBUseCase: InsertToDBUseCase
-    private val updateDBUseCase: UpdateDBUseCase
+@HiltViewModel
+class TodoViewModel @Inject constructor(
+    application: Application,
+    private val deleteFromDBUseCase: DeleteFromDBUseCase,
+    private val getAllTodosUseCase: GetAllTodosUseCase,
+    private val insertToDBUseCase: InsertToDBUseCase,
+    private val updateDBUseCase: UpdateDBUseCase,
+): AndroidViewModel(application) {
+    val allTodo : LiveData<List<TodoDomain>> = getAllTodosUseCase.execute()
+//    private val deleteFromDBUseCase: DeleteFromDBUseCase
+//    private val getAllTodosUseCase: GetAllTodosUseCase
+//    private val insertToDBUseCase: InsertToDBUseCase
+//    private val updateDBUseCase: UpdateDBUseCase
 
     init {
-        val dao = TodoDatabase.getDatabase(application).getTodoDao()
-        repository = TodoRepositoryImpl(dao)
-        deleteFromDBUseCase = DeleteFromDBUseCase(repository)
-        getAllTodosUseCase = GetAllTodosUseCase(repository)
-        insertToDBUseCase = InsertToDBUseCase(repository)
-        updateDBUseCase = UpdateDBUseCase(repository)
-        allTodo = getAllTodosUseCase.execute()
+//        val dao = TodoDatabase.getDatabase(application).getTodoDao()
+//        repository = TodoRepositoryImpl(dao)
+//        deleteFromDBUseCase = DeleteFromDBUseCase(repository)
+//        getAllTodosUseCase = GetAllTodosUseCase(repository)
+//        insertToDBUseCase = InsertToDBUseCase(repository)
+//        updateDBUseCase = UpdateDBUseCase(repository)
 
     }
 

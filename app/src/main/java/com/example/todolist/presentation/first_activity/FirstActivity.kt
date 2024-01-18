@@ -6,18 +6,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.presentation.adapters.TodoAdapter
 import com.example.todolist.data.database.TodoDatabase
 import com.example.todolist.databinding.ActivityFirstBinding
 import com.example.todolist.domain.models.TodoDomain
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
 
     private lateinit var binding: ActivityFirstBinding
     private lateinit var database: TodoDatabase
-    private lateinit var viewModel: TodoViewModel
+    private val viewModel: TodoViewModel by viewModels()
     private lateinit var adapter: TodoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,10 +30,10 @@ class FirstActivity : AppCompatActivity(), TodoAdapter.TodoClickListener {
 
         initUI()
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        )[TodoViewModel::class.java]
+//        viewModel = ViewModelProvider(
+//            this,
+//            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+//        )[TodoViewModel::class.java]
 
         viewModel.allTodo.observe(this) { list ->
             list?.let {
