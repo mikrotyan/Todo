@@ -31,11 +31,8 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         init(view)
-
         val isLogin: Boolean = mAuth.currentUser != null
-
         val handler = Handler(Looper.myLooper()!!)
         handler.postDelayed({
 

@@ -33,10 +33,7 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         init(view)
-
         binding.textViewSignIn.setOnClickListener {
             navController.navigate(R.id.action_signUpFragment_to_signInFragment)
         }
@@ -61,8 +58,6 @@ class SignUpFragment : Fragment() {
     }
 
     private fun registerUser(email: String, pass: String) {
-
-
 
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
             if (it.isSuccessful)
